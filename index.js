@@ -71,6 +71,7 @@ app.post('/login', async (req, res) => {
             const tz = moment.tz.guess()
            
             
+            console.log('user TZ',tz);
             res.json({ message: `else Tu Cuenta esta bloqueada Hasta ${moment(user.lockUntil).tz(tz).format('hh:mm:ss')}` })
         }
 
