@@ -1,6 +1,6 @@
 const express = require('express')
-const moment = require('moment');
-moment.tz.guess();
+const moment = require('moment-timezone');
+moment.tz.guess(true)
 
 const app = express()
 const mongodbConnection = require('./mongodb.connection')
