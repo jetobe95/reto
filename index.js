@@ -1,7 +1,6 @@
 const express = require('express')
 const moment = require('moment-timezone');
-const tz = moment.tz.guess()
-moment.tz.setDefault(tz)
+
 
 const app = express()
 const mongodbConnection = require('./mongodb.connection')
@@ -69,8 +68,10 @@ app.post('/login', async (req, res) => {
 
 
         } else {
-            console.log(moment(user.lockUntil).format('hh:mm:ss'));
-            res.json({ message: `else Tu Cuenta esta bloqueada Hasta ${moment(user.lockUntil).format('hh:mm:ss')}` })
+            const tz = moment.tz.guess()
+           
+            
+            res.json({ message: `else Tu Cuenta esta bloqueada Hasta ${moment(user.lockUntil).tz(tz).format('hh:mm:ss')}` })
         }
 
 
