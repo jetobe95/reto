@@ -1,5 +1,6 @@
 const express = require('express')
 const moment = require('moment');
+moment.tz.guess();
 
 const app = express()
 const mongodbConnection = require('./mongodb.connection')
