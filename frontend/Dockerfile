@@ -1,21 +1,16 @@
+# stage: 1
+FROM node:8 as react-build
+WORKDIR /app
+COPY . ./
+RUN yarn
+RUN yarn build
 
-FROM alpine
-
-EXPOSE 4000
-EXPOSE 3000
-
-COPY package.json ./
-COPY . .
-RUN apk add nodejs && \
-    apk add npm && \
-    rm -rf node_modules && \
-    npm install && \
-    npm install -g serve && \
-    npm run build && \
-
-   
-CMD ["serve","-s","build","-l","4000"]
-
+# stage: 2 — the production environment
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=react-build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
 
 
 
