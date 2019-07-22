@@ -8,10 +8,6 @@ const userSchema = new Schema({
     attempts: { type: Number, default: 0 },
     attemptDate: Date,
 })
-
-
-
-
 const userModel = model('user', userSchema, 'users')
 
 module.exports = userModel

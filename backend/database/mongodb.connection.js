@@ -1,3 +1,4 @@
 const mongose = require('mongoose')
-const url = 'mongodb://mongo:27017/login-bloqueo'
+const MONGO_URL = process.env.MONGO_URL
+const url = `${MONGO_URL}/login-bloqueo`
 module.exports = mongose.connect(url, { useNewUrlParser: true })
