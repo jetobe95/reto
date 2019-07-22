@@ -1,6 +1,6 @@
 import Axios from 'axios';
 const axios = Axios.create({
-    baseURL: 'http://localhost:4000/api',
+    baseURL: 'http://40.121.70.18:4000/api',
 })
 axios.interceptors.response.use(function (response) {
     return response.data
