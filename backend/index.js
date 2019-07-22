@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+
 require('dotenv').config()
 
 const mongodbConnection = require('./database/mongodb.connection')
@@ -9,6 +11,7 @@ const port = process.env.PORT || 4000
     Middlewares
 */
 app.use(express.json())
+app.use(cors( ))
 
 
 app.listen(port, () => console.log(`Server on port ${port}`))
